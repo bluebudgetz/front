@@ -7,7 +7,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/arikkfir/bluebudgetz.git"
+    "url": "git+ssh://git@github.com/bluebudgetz/front.git"
   },
   "scripts": {
     "start": "react-scripts-ts start",
