@@ -28,6 +28,7 @@ import {
 import Overview from "Overview";
 import About from "About";
 import {GithubCircle, LinkedinBox} from "mdi-material-ui";
+import Accounts from "./Accounts";
 
 interface NavLinkProps extends RouteComponentProps {
     path: string
@@ -85,6 +86,7 @@ class App extends React.Component {
                         </nav>
                         <main>
                             <Route exact={true} path="/" component={Overview}/>
+                            <Route path="/accounts" component={Accounts}/>
                             <Route path="/about" component={About}/>
                         </main>
                         <aside/>
