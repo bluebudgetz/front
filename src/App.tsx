@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ReactElement} from 'react';
 
 import 'App.scss';
 import {
@@ -9,12 +10,21 @@ import {
     Link,
     List,
     ListItem,
+    ListItemIcon,
     ListItemText,
     Toolbar,
     Typography
 } from "@material-ui/core";
 import {BrowserRouter as Router, Route, RouteComponentProps, withRouter} from "react-router-dom";
-import {BubbleChartRounded, Copyright} from "@material-ui/icons";
+import {
+    AllInboxRounded,
+    BubbleChartRounded,
+    Copyright,
+    HomeRounded,
+    InfoRounded,
+    ListRounded,
+    SettingsRounded
+} from "@material-ui/icons";
 import Overview from "Overview";
 import About from "About";
 import {GithubCircle, LinkedinBox} from "mdi-material-ui";
@@ -23,12 +33,16 @@ interface NavLinkProps extends RouteComponentProps {
     path: string
     primary: string
     secondary?: string
+    icon: ReactElement
 }
 
 class NavLink extends React.Component<NavLinkProps> {
     public render() {
+        const icon = this.props.icon;
         return (
-            <ListItem button={true} component="a" href={this.props.path} selected={this.props.path === this.props.location.pathname}>
+            <ListItem button={true} component="a" href={this.props.path}
+                      selected={this.props.path === this.props.location.pathname}>
+                <ListItemIcon>{icon}</ListItemIcon>
                 <ListItemText primary={this.props.primary} secondary={this.props.secondary}/>
             </ListItem>
         )
@@ -55,15 +69,18 @@ class App extends React.Component {
                     <div className="Content">
                         <nav>
                             <List>
-                                <RouteLink path="/" primary="Overview" secondary="Monetary overview"/>
-                                <RouteLink path="/transactions" primary="Transactions" secondary="Search transactions"/>
-                                <RouteLink path="/accounts" primary="Accounts" secondary="Manage accounts"/>
-                                <RouteLink path="/settings" primary="Settings" secondary="Personal settings"/>
+                                <RouteLink icon={<HomeRounded/>} path="/" primary="Overview"
+                                           secondary="Monetary overview"/>
+                                <RouteLink icon={<ListRounded/>} path="/transactions" primary="Transactions"
+                                           secondary="Search transactions"/>
+                                <RouteLink icon={<AllInboxRounded/>} path="/accounts" primary="Accounts"
+                                           secondary="Manage accounts"/>
                                 <Divider/>
-                                <RouteLink path="/about" primary="About" secondary="About Bluebudgetz"/>
+                                <RouteLink icon={<SettingsRounded/>} path="/settings" primary="Settings"
+                                           secondary="Personal settings"/>
                                 <Divider/>
-                                <RouteLink path="https://material-ui.com" primary="Material UI" secondary=""/>
-                                <RouteLink path="https://material.io/tools/icons" primary="Material UI Icons"/>
+                                <RouteLink icon={<InfoRounded/>} path="/about" primary="About"
+                                           secondary="About Bluebudgetz"/>
                             </List>
                         </nav>
                         <main>
