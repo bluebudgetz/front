@@ -1,0 +1,11 @@
+<h1>Accounts here</h1>
+
+<ul>
+    <li *ngFor="let acc of accounts | async" (click)="onSelect(acc)" [class.selected]="selected && acc.id === selected.id">
+        <span class="badge">{{acc.id}}</span> {{acc.name}}
+    </li>
+</ul>
+
+<div *ngIf="selected">
+    Selected: {{ selected.name | uppercase }}
+</div>

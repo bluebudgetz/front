@@ -1,0 +1,10 @@
+@import '~@angular/material/theming';
+
+.toolbar-title, .toolbar-title:hover, .toolbar-title:visited {
+    color: $light-primary-text;
+    text-decoration: none;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
