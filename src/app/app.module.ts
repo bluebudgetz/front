@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {AppHeaderComponent} from "./header/header.component";
 import {AppFooterComponent} from "./footer/footer.component";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -26,12 +27,13 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
         BrowserModule,
         BrowserAnimationsModule, // or NoopAnimationsModule to disable animations
         HttpClientModule,
-        GraphQLModule,
         AppRoutingModule,
+        FormsModule,
         LayoutModule,
-        MaterialModule,
         FlexLayoutModule,
+        MaterialModule,
         FontAwesomeModule,
+        GraphQLModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
