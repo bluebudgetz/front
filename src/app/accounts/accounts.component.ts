@@ -3,6 +3,8 @@ import {Account} from '../model/account';
 import {FetchAccountsQuery} from "../accounts.service";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {NestedTreeControl} from "@angular/cdk/tree";
+import {MatTreeNestedDataSource} from "@angular/material";
 
 @Component({
     selector: 'app-accounts',
@@ -15,6 +17,10 @@ export class AccountsComponent implements OnInit, OnDestroy {
 
     selected: Account = null;
 
+    treeControl = new NestedTreeControl<Account>(node => node.childAccounts);
+
+    dataSource = new MatTreeNestedDataSource<Account>();
+
     constructor(private fetchAccountsQuery: FetchAccountsQuery) {
     }
 
@@ -24,6 +30,9 @@ export class AccountsComponent implements OnInit, OnDestroy {
             .watch()
             .valueChanges
             .pipe(map(result => result.data && result.data.accounts));
+        this.accounts.subscribe(value => {
+            this.dataSource.data = value;
+        });
     }
 
     ngOnDestroy(): void {
@@ -34,4 +43,5 @@ export class AccountsComponent implements OnInit, OnDestroy {
         this.selected = acc;
     }
 
+    hasChild = (_: number, node: Account) => !!node.childAccounts && node.childAccounts.length > 0;
 }
