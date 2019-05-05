@@ -4,57 +4,41 @@ When contributing to this repository, please first discuss the change you wish t
 
 Please note we have a [code of conduct](./CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
-## Development
+## General
 
-Gitzup uses `Make` as a build system, though internally the standard Go tools are used (`go build`, `go install`, `go test`, etc).
+This project is an [Angular CLI](https://github.com/angular/angular-cli) (version 7.3.8) project. It requires a running [API server](https://github.com/bluebudgetz/gate) to get data from.
 
-### Building
+### Local server
 
-```bash
-$ make
-```
+Run `ng serve` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
 
-### Updating GCP service account key for Travis CI
+### Code scaffolding
 
-To update the GCP service account JSON key file, do the following:
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-1. Obtain an update GCP service account JSON key from the GCP console and store it as `.travis-ci-sa-key.json` in the repository root directory.
+### Build
 
-2. Run the following:
-
-    ```
-    $ travis encrypt-file .travis-ci-sa-key.json
-    encrypting .travis-ci-sa-key.json for kfirz/gitzup
-    storing result as .travis-ci-sa-key.json.enc
-    storing secure env variables for decryption
-
-    Please add the following to your build script (before_install stage in your .travis.yml, for instance):
-
-    openssl aes-... -K $encrypted_..._key -iv $encrypted_..._iv -in .travis-ci-sa-key.json.enc -out .travis-ci-sa-key.json -d
-
-    Pro Tip: You can add it automatically by running with --add.
-
-    Make sure to add .travis-ci-sa-key.json.enc to the git repository.
-    Make sure not to add .travis-ci-sa-key.json to the git repository.
-    Commit all changes to your .travis.yml.
-    ```
-   
-   **NOTE:** keep the output open! you will need to copy some of it in step 3!
-  
-3. Open the `.tracvis.yml` file and update the `openssl` command with the updated form printed in step 2.
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ### Testing
 
-```bash
-$ make test
-```
+#### Unit tests
 
-## Pull Request process
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-Aside from the actual change in source code, please ensure your PR update any relevant tests and/or adds new tests as necessary. PRs that lower test coverage, or cause test failures, will not be accepted.
+#### End-to-end tests
 
-For cases where the change affects information displayed in the documentation, please ensure the PR updates the documentation as well (eg. `README.md`).
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Releasing
+### Further help
 
-TBD.
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+Also, here is a list of useful resources used in this project:
+
+- [Apollo GraphQL Client](https://www.apollographql.com/docs/angular/)
+- [Angular](https://angular.io/guide)
+- [PrimeNG](https://www.primefaces.org/primeng/#/)
+- [PrimeStore](https://www.primefaces.org/store/secure/home.xhtml) where the Designer API can be bought & downloaded from.
+- [Font Awesome Icons](https://fontawesome.com/icons?d=gallery)
+- [Angular Flex Layout](https://github.com/angular/flex-layout)
