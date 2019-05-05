@@ -32,7 +32,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - [Apollo GraphQL Client](https://www.apollographql.com/docs/angular/)
 - [Angular](https://angular.io/guide)
-- [Angular Material Design](https://material.angular.io)
-- [Material Design Icons](https://material.io/tools/icons)
+- [PrimeNG](https://www.primefaces.org/primeng/#/)
+- [PrimeStore](https://www.primefaces.org/store/secure/home.xhtml) where the Designer API can be bought & downloaded from.
 - [Font Awesome Icons](https://fontawesome.com/icons?d=gallery)
 - [Angular Flex Layout](https://github.com/angular/flex-layout)

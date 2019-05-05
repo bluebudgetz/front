@@ -5,21 +5,17 @@ import {GraphQLModule} from './graphql.module';
 import {AppComponent} from './app.component';
 import {AccountsComponent} from './accounts/accounts.component';
 import {TransactionsComponent} from './transactions/transactions.component';
-import {AppRoutingModule} from './app-routing.module';
+import {RoutingModule} from './routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from './material.module';
+import {PrimeNGModule} from "./primeng.module";
 import {LayoutModule} from '@angular/cdk/layout';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import {AppHeaderComponent} from "./header/header.component";
-import {AppFooterComponent} from "./footer/footer.component";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {IconsModule} from "./icons.module";
 import {FormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
         AppComponent,
-        AppHeaderComponent,
-        AppFooterComponent,
         AccountsComponent,
         TransactionsComponent,
     ],
@@ -27,12 +23,12 @@ import {FormsModule} from "@angular/forms";
         BrowserModule,
         BrowserAnimationsModule, // or NoopAnimationsModule to disable animations
         HttpClientModule,
-        AppRoutingModule,
+        RoutingModule,
         FormsModule,
         LayoutModule,
         FlexLayoutModule,
-        MaterialModule,
-        FontAwesomeModule,
+        PrimeNGModule,
+        IconsModule,
         GraphQLModule,
     ],
     providers: [],
