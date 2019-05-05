@@ -1,4 +1,14 @@
+/.sass-cache
+/coverage
+/dist
 /node_modules
+/out-tsc
+/tmp
+/connect.lock
+/libpeerconnection.log
+/typings
 *.local.*
 .DS_Store
+npm-debug.log
+testem.log
 Thumbs.db

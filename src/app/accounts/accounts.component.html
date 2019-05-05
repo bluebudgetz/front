@@ -1,0 +1,22 @@
+<div fxFlexFill fxLayout="column">
+    <h1 fxFlex="none">Balance</h1>
+    <p-treeTable [value]="accounts">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Account</th>
+                <th>Last transaction</th>
+                <th>Balance</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <tr>
+                <td>
+                    <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                    {{rowData.name}}
+                </td>
+                <td>$12</td>
+                <td>$133.0</td>
+            </tr>
+        </ng-template>
+    </p-treeTable>
+</div>

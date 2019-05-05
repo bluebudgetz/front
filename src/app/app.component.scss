@@ -1,0 +1,62 @@
+@import "variables";
+
+.root {
+    > header {
+        background-color: $primaryColor;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+        color: $primaryTextColor;
+        padding: 0.3em;
+        z-index: 999;
+        > .brand {
+            margin: 0 0.5em;
+            text-shadow: #000 1px 1px 1px;
+        }
+        > .slogan {
+            font-style: italic;
+            text-shadow: #000 1px 1px 1px;
+        }
+    }
+    > .content {
+        > nav {
+            background-color: $panelHeaderBgColor;
+            border-right: $panelHeaderBorder;
+            box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.2);
+            color: $panelHeaderTextColor;
+            margin: 0;
+            padding: 0;
+            > a {
+                color: inherit !important;
+                padding: 1em;
+                text-decoration: none;
+
+                &:hover, &.active {
+                    background-color: $primaryColor;
+                    color: $primaryTextColor !important;
+                    opacity: 0.7;
+                }
+                &:hover, &:visited {
+                    text-decoration: none;
+                }
+
+                span:nth-child(1) {
+                    min-width: 2em;
+                    text-align: center;
+                }
+                span:nth-child(2) {
+                }
+            }
+        }
+        > main {
+            padding: 1em;
+        }
+    }
+    > footer {
+        background-color: $panelHeaderBgColor;
+        border-top: $panelHeaderBorder;
+        color: $panelHeaderTextColor;
+        padding: 0.3em;
+        a, a:visited, a:hover {
+            color: $panelHeaderTextColor;
+        }
+    }
+}

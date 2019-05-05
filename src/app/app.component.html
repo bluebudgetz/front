@@ -1,0 +1,40 @@
+<div fxFlexFill fxLayout="column" class="root">
+    <header fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="space-around center">
+        <h1 class="brand">Bluebudgetz</h1>
+        <h6 class="slogan">accounting buddy.</h6>
+        <div fxFlex="1 1 auto">&nbsp;</div>
+        <div fxFlex="0 0 auto">
+            <fa-icon icon="user-circle" size="2x"></fa-icon>
+        </div>
+    </header>
+    <div fxFlex="1 1 auto" fxLayout="row" class="content">
+        <nav fxFlex="none" fxLayout="column">
+            <a routerLink="/accounts" fxLayout="row" routerLinkActive="active">
+                <span fxFlex="none"><fa-icon icon="balance-scale"></fa-icon></span>
+                <span>Balance</span>
+            </a>
+            <a routerLink="/transactions" fxLayout="row" routerLinkActive="active">
+                <span fxFlex="none"><fa-icon icon="list-alt"></fa-icon></span>
+                <span>Transactions</span>
+            </a>
+            <a routerLink="/settings" fxLayout="row" routerLinkActive="active">
+                <span fxFlex="none"><fa-icon icon="cog"></fa-icon></span>
+                <span>Settings</span>
+            </a>
+            <a routerLink="/about" fxLayout="row" routerLinkActive="active">
+                <span fxFlex="none"><fa-icon icon="info-circle"></fa-icon></span>
+                <span>About</span>
+            </a>
+        </nav>
+        <main fxFlex="1 1 auto">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+    <footer fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+        Copyright&nbsp;<fa-icon [icon]="['far', 'copyright']" size="lg"></fa-icon>&nbsp;2019 Arik Kfir
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <a href="https://www.linkedin.com/in/arikkfir"><fa-icon [icon]="['fab','linkedin']" size="lg"></fa-icon></a>
+        <span>&nbsp;</span>&nbsp;
+        <a href="https://github.com/arikkfir"><fa-icon [icon]="['fab','github']" size="lg"></fa-icon></a>
+    </footer>
+</div>
