@@ -20,7 +20,7 @@ export class AccountsComponent implements OnInit {
                 name: account.name,
                 incoming: account.incoming,
                 outgoing: account.outgoing,
-                balance: account.incoming + account.outgoing,
+                balance: account.incoming - account.outgoing,
             },
             leaf: account.childCount === 0
         };
