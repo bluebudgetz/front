@@ -1,63 +1,53 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Account} from '../model/account';
-import {FetchAccountsQuery} from "../accounts.service";
-import {Subscription} from "rxjs";
+import {FetchChildAccountsQuery, FetchRootAccountsQuery} from "../accounts.service";
 import {map} from "rxjs/operators";
 import {TreeNode} from "primeng/api";
-
-/**
- * Represents an account tree node.
- */
-class AccountTreeNode implements TreeNode {
-    label: string;
-    data: Account;
-    icon?: any;
-    expandedIcon?: any;
-    collapsedIcon?: any;
-    children?: TreeNode[];
-    leaf?: boolean;
-    parent?: TreeNode;
-    key?: string;
-
-    constructor(account: Account, parent?: TreeNode) {
-        this.key = account.id + "";
-        this.label = account.name;
-        this.data = account;
-        this.leaf = !(account.childAccounts && account.childAccounts.length);
-        this.parent = parent;
-        this.children = account.childAccounts && account.childAccounts.map(child => new AccountTreeNode(child, this));
-    }
-}
 
 @Component({
     selector: 'app-accounts',
     templateUrl: './accounts.component.html',
     styleUrls: ['./accounts.component.scss']
 })
-export class AccountsComponent implements OnInit, OnDestroy {
+export class AccountsComponent implements OnInit {
 
     accounts: TreeNode[];
 
-    accountsSubscription: Subscription;
+    static accountNodeToTreeNode(account: Account): TreeNode {
+        return {
+            data: {
+                id: account.id,
+                name: account.name,
+                incoming: account.incoming,
+                outgoing: account.outgoing,
+                balance: account.incoming + account.outgoing,
+            },
+            leaf: account.childCount === 0
+        };
+    }
 
-    constructor(private fetchAccountsQuery: FetchAccountsQuery) {
+    constructor(private rootAccounts: FetchRootAccountsQuery, private childAccounts: FetchChildAccountsQuery) {
     }
 
     ngOnInit() {
         // TODO: handle stale/errors/loading/networkStatus
-        this.accountsSubscription = this.fetchAccountsQuery
-            .watch()
-            .valueChanges
-            .pipe(map(result => result.data && result.data.accounts || []))
-            .pipe(map(accounts => accounts.map(account => new AccountTreeNode(account))))
+        this.rootAccounts
+            .fetch()
+            .pipe(map(result => result.data && result.data.rootAccounts || []))
+            .pipe(map(accounts => accounts.map(account => AccountsComponent.accountNodeToTreeNode(account))))
             .subscribe(value => this.accounts = value);
     }
 
-    ngOnDestroy(): void {
-        const subscription = this.accountsSubscription;
-        this.accountsSubscription = null;
-        if (subscription != null) {
-            subscription.unsubscribe();
-        }
+    onNodeExpand(event) {
+        const node = event.node;
+        // TODO: handle stale/errors/loading/networkStatus
+        this.childAccounts
+            .fetch({parentId: node.data.id})
+            .pipe(map(result => result.data && result.data.childAccounts || []))
+            .pipe(map(accounts => accounts.map(account => AccountsComponent.accountNodeToTreeNode(account))))
+            .subscribe(value => {
+                node.children = value;
+                this.accounts = [...this.accounts];
+            });
     }
 }

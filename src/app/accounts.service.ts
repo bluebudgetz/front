@@ -6,44 +6,42 @@ import {Account} from "./model/account";
 /**
  * Response emitted by a call to the "accounts" GraphQL query.
  */
-export class AccountsResponse {
-    accounts: Account[];
+export class RootAccountsResponse {
+    rootAccounts: Account[];
+}
+
+@Injectable({providedIn: 'root'})
+export class FetchRootAccountsQuery extends Query<RootAccountsResponse> {
+    document = gql`
+        query {
+            rootAccounts {
+                id
+                name
+                childCount
+                incoming
+                outgoing
+            }
+        }
+    `;
 }
 
 /**
- * Represents the "accounts" GraphQL query.
- * <p/>
- * Note that GraphQL does not support recursive queries, therefor an explicit pre-determined depth of account nesting
- * is specified verbatim in the query.
+ * Response emitted by a call to the "accounts" GraphQL query.
  */
-@Injectable({
-    providedIn: 'root',
-})
-export class FetchAccountsQuery extends Query<AccountsResponse> {
+export class ChildAccountsResponse {
+    childAccounts: Account[];
+}
+
+@Injectable({providedIn: 'root'})
+export class FetchChildAccountsQuery extends Query<ChildAccountsResponse> {
     document = gql`
-        query {
-            accounts {
-                id, name, childAccounts {
-                    id, name, childAccounts {
-                        id, name, childAccounts {
-                            id, name, childAccounts {
-                                id, name, childAccounts {
-                                    id, name, childAccounts {
-                                        id, name, childAccounts {
-                                            id, name, childAccounts {
-                                                id, name, childAccounts {
-                                                    id, name, childAccounts {
-                                                        id, name
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+        query($parentId: Int!) {
+            childAccounts(parentId: $parentId) {
+                id
+                name
+                childCount
+                incoming
+                outgoing
             }
         }
     `;

@@ -1,5 +1,7 @@
 export class Account {
     id: number;
     name: string;
-    childAccounts: Account[];
+    childCount: number;
+    incoming: number;
+    outgoing: number;
 }

@@ -1,21 +1,41 @@
 <div fxFlexFill fxLayout="column">
     <h1 fxFlex="none">Balance</h1>
-    <p-treeTable [value]="accounts">
+    <p-treeTable [value]="accounts" (onNodeExpand)="onNodeExpand($event)">
         <ng-template pTemplate="header">
             <tr>
                 <th>Account</th>
-                <th>Last transaction</th>
+                <th>Incoming</th>
+                <th>Outgoing</th>
                 <th>Balance</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
-            <tr>
+            <tr [ttRow]="rowNode">
                 <td>
+                    <!-- TEMPORARY PATCH / CONDITION: https://github.com/primefaces/primeng/issues/7297 -->
+                    <a *ngIf="rowNode.node.leaf && rowNode.level === 0" class="ui-treetable-toggler ui-unselectable-text" style="visibility: hidden;">
+                        <i class="pi pi-fw pi-chevron-right" ng-reflect-ng-class="pi pi-fw pi-chevron-right"></i>
+                    </a>
+                    <!-- TEMPORARY PATCH / END -->
+
                     <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
                     {{rowData.name}}
                 </td>
-                <td>$12</td>
-                <td>$133.0</td>
+                <td class="incoming">
+                    <span *ngIf="rowData.incoming > 0">{{rowData.incoming | currency : '₪ ' }}</span>
+                    <a routerLink="/transactions" [queryParams]="{target: rowData.id}" fxLayout="row" *ngIf="rowData.incoming > 0">
+                        <span fxFlex="none" style="margin-right: 0.5em"><fa-icon icon="handshake"></fa-icon></span>
+                    </a>
+                </td>
+                <td class="outgoing">
+                    <span *ngIf="rowData.outgoing > 0">{{rowData.outgoing | currency : '₪ ' }}</span>
+                    <a routerLink="/transactions" [queryParams]="{source: rowData.id}" fxLayout="row" *ngIf="rowData.outgoing > 0">
+                        <span fxFlex="none" style="margin-right: 0.5em"><fa-icon icon="handshake"></fa-icon></span>
+                    </a>
+                </td>
+                <td>
+                    <span>{{rowData.incoming - rowData.outgoing | currency : '₪ ' }}</span>
+                </td>
             </tr>
         </ng-template>
     </p-treeTable>
