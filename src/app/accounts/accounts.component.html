@@ -1,6 +1,6 @@
-<div fxFlexFill fxLayout="column">
-    <h1 fxFlex="none">Balance</h1>
-    <p-treeTable [value]="accounts" (onNodeExpand)="onNodeExpand($event)" fxFlex="0 0 auto">
+<div class="p-grid p-dir-col">
+    <h1 class="p-col">Balance</h1>
+    <p-treeTable [value]="accounts" (onNodeExpand)="onNodeExpand($event)" class="p-col">
         <ng-template pTemplate="header">
             <tr>
                 <th>Account</th>

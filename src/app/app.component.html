@@ -1,36 +1,27 @@
-<div fxFlexFill fxLayout="column" class="root">
-    <header fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="space-around center">
-        <h1 class="brand">Bluebudgetz</h1>
-        <h6 class="slogan">accounting buddy.</h6>
-        <div fxFlex="1 1 auto">&nbsp;</div>
-        <div fxFlex="0 0 auto">
+<p-sidebar [(visible)]="sideBarOpen">
+    <nav class="p-grid p-dir-col">
+        <a *ngFor="let m of menu" [routerLink]="m.path" routerLinkActive="active" class="p-col" (click)="sideBarOpen=false">
+            <span class="p-col"><fa-icon [icon]="m.icon"></fa-icon></span>
+            <span class="p-col">{{m.text}}</span>
+        </a>
+    </nav>
+</p-sidebar>
+
+<div class="root p-grid p-dir-col p-nogutter">
+    <header class="p-col-fixed p-grid p-nogutter p-align-center">
+        <div class="menu p-col-fixed">
+            <fa-icon icon="bars" size="lg" (click)="sideBarOpen = !sideBarOpen"></fa-icon>
+        </div>
+        <h1 class="brand p-col-fixed">Bluebudgetz</h1>
+        <div class="p-col">&nbsp;</div>
+        <div class="user-menu p-col-fixed">
             <fa-icon icon="user-circle" size="2x"></fa-icon>
         </div>
     </header>
-    <div fxFlex="1 1 auto" fxLayout="row" class="content">
-        <nav fxFlex="none" fxLayout="column">
-            <a routerLink="/accounts" fxLayout="row" routerLinkActive="active">
-                <span fxFlex="none"><fa-icon icon="balance-scale"></fa-icon></span>
-                <span>Balance</span>
-            </a>
-            <a routerLink="/transactions" fxLayout="row" routerLinkActive="active">
-                <span fxFlex="none"><fa-icon icon="list-alt"></fa-icon></span>
-                <span>Transactions</span>
-            </a>
-            <a routerLink="/settings" fxLayout="row" routerLinkActive="active">
-                <span fxFlex="none"><fa-icon icon="cog"></fa-icon></span>
-                <span>Settings</span>
-            </a>
-            <a routerLink="/about" fxLayout="row" routerLinkActive="active">
-                <span fxFlex="none"><fa-icon icon="info-circle"></fa-icon></span>
-                <span>About</span>
-            </a>
-        </nav>
-        <main fxFlex="1 1 auto">
-            <router-outlet></router-outlet>
-        </main>
-    </div>
-    <footer fxFlex="0 0 auto" fxLayout="row" fxLayoutAlign="center center">
+    <main class="p-col">
+        <router-outlet></router-outlet>
+    </main>
+    <footer class="p-col-fixed">
         Copyright&nbsp;<fa-icon [icon]="['far', 'copyright']" size="lg"></fa-icon>&nbsp;2019 Arik Kfir
         <span>&nbsp;&nbsp;&nbsp;</span>
         <a href="https://www.linkedin.com/in/arikkfir"><fa-icon [icon]="['fab','linkedin']" size="lg"></fa-icon></a>
