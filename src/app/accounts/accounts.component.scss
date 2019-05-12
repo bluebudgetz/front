@@ -1,14 +1,7 @@
-td.incoming {
+.positive {
     color: green !important;
-    a {
-        float: right;
-    }
 }
 
-td.outgoing {
+.negative {
     color: red !important;
-    a {
-        float: right;
-    }
 }
-
