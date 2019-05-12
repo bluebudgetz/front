@@ -1,3 +1,19 @@
-<p>
-    transactions component works!
-</p>
+<div class="p-grid p-dir-col">
+    <h1 class="p-col">Transactions</h1>
+
+    <h2>Form</h2>
+    <form [formGroup]="filtersForm" (ngSubmit)="onSubmit()">
+        <div class="p-grid p-dir-col">
+            <p-calendar class="p-col"
+                        formControlName="range"
+                        [maxDate]="maxDate"
+                        placeholder="Date range"
+                        readonlyInput="true"
+                        [numberOfMonths]="2"
+                        selectionMode="range"
+                        showIcon="true"></p-calendar>
+        </div>
+        <button class="p-col" type="submit" [disabled]="!filtersForm.valid">Fetch!</button>
+    </form>
+
+</div>
