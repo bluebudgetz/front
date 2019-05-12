@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Account} from '../model/account';
-import {FetchChildAccountsQuery, FetchRootAccountsQuery} from "../accounts.service";
+import {AccountVO, FetchChildAccountsQuery, FetchRootAccountsQuery} from "../accounts.service";
 import {map} from "rxjs/operators";
 import {TreeNode} from "primeng/api";
 
@@ -13,7 +12,7 @@ export class AccountsComponent implements OnInit {
 
     accounts: TreeNode[];
 
-    static accountNodeToTreeNode(account: Account): TreeNode {
+    static accountNodeToTreeNode(account: AccountVO): TreeNode {
         return {
             data: {
                 id: account.id,

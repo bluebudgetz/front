@@ -1,13 +1,20 @@
 import {Injectable} from '@angular/core';
 import {Query} from "apollo-angular";
 import gql from "graphql-tag";
-import {Account} from "./model/account";
+
+export interface AccountVO {
+    id: number;
+    name: string;
+    childCount: number;
+    incoming: number;
+    outgoing: number;
+}
 
 /**
  * Response emitted by a call to the "accounts" GraphQL query.
  */
 export class RootAccountsResponse {
-    rootAccounts: Account[];
+    rootAccounts: AccountVO[];
 }
 
 @Injectable({providedIn: 'root'})
@@ -29,7 +36,7 @@ export class FetchRootAccountsQuery extends Query<RootAccountsResponse> {
  * Response emitted by a call to the "accounts" GraphQL query.
  */
 export class ChildAccountsResponse {
-    childAccounts: Account[];
+    childAccounts: AccountVO[];
 }
 
 @Injectable({providedIn: 'root'})
