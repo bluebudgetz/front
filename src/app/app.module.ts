@@ -11,7 +11,7 @@ import {PrimeNGModule} from "./primeng.module";
 import {LayoutModule} from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {IconsModule} from "./icons.module";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -25,6 +25,7 @@ import {FormsModule} from "@angular/forms";
         HttpClientModule,
         RoutingModule,
         FormsModule,
+        ReactiveFormsModule,
         LayoutModule,
         FlexLayoutModule,
         PrimeNGModule,
