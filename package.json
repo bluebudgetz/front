@@ -46,6 +46,7 @@
         "core-js": "^2.5.4",
         "graphql": "^0.13.2",
         "graphql-tag": "^2.10.0",
+        "moment": "~2.24.0",
         "primeflex": "^1.0.0-rc.1",
         "primeicons": "^1.0.0",
         "primeng": "^7.1.2",
