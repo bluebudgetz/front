@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
-import {GraphQLModule} from './graphql.module';
 import {AppComponent} from './app.component';
 import {AccountsComponent} from './accounts/accounts.component';
 import {TransactionsComponent} from './transactions/transactions.component';
@@ -29,7 +28,6 @@ import { MaterialModule } from './material.module';
         LayoutModule,
         FlexLayoutModule,
         IconsModule,
-        GraphQLModule,
         MaterialModule,
     ],
     providers: [],

@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FetchTransactionsQuery, TransactionVO} from "../transactions.service";
-import {map} from "rxjs/operators";
+import {TransactionVO} from "../transactions.service";
 import {FormBuilder, Validators} from "@angular/forms";
 import * as moment from "moment";
 
@@ -10,7 +9,6 @@ import * as moment from "moment";
     styleUrls: ['./transactions.component.scss']
 })
 export class TransactionsComponent implements OnInit {
-    maxDate = new Date();
 
     filtersForm = this.fb.group({
         range: [
@@ -21,17 +19,12 @@ export class TransactionsComponent implements OnInit {
 
     transactions: TransactionVO[];
 
-    constructor(private transactionsQuery: FetchTransactionsQuery, private fb: FormBuilder) {
+    constructor(private fb: FormBuilder) {
     }
 
     ngOnInit() {
     }
 
     onSubmit() {
-        const range = this.filtersForm.get("range");
-        this.transactionsQuery
-            .fetch({from: range.value[0], until: range.value[1]})
-            .pipe(map(result => result.data && result.data.transactions || []))
-            .subscribe(transactions => this.transactions = transactions);
     }
 }
