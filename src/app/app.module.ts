@@ -7,11 +7,11 @@ import {AccountsComponent} from './accounts/accounts.component';
 import {TransactionsComponent} from './transactions/transactions.component';
 import {RoutingModule} from './routing.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {PrimeNGModule} from "./primeng.module";
 import {LayoutModule} from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {IconsModule} from "./icons.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { MaterialModule } from './material.module';
 
 @NgModule({
     declarations: [
@@ -28,9 +28,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         ReactiveFormsModule,
         LayoutModule,
         FlexLayoutModule,
-        PrimeNGModule,
         IconsModule,
         GraphQLModule,
+        MaterialModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

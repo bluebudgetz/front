@@ -1,20 +1,25 @@
+// Super-simple reset.
 html, body { height: 100%; }
-body { margin: 0; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// Import the application theme.
+@import "theme.scss";
+@include mat-core();
+@include angular-material-theme($app-theme);
 
 /*
-.ng-valid
-.ng-invalid
-.ng-pending
-.ng-pristine
-.ng-dirty
-.ng-untouched
-.ng-touched
-
-.ng-valid[required], .ng-valid.required  {
-  border-left: 5px solid #42A948;
-}
-.ng-invalid:not(form)  {
-    border-left: 5px solid #a94442;
-}
-
+ * Angular provides the following CSS classes for forms:
+ *      .ng-valid
+ *      .ng-invalid
+ *      .ng-pending
+ *      .ng-pristine
+ *      .ng-dirty
+ *      .ng-untouched
+ *      .ng-touched
+ *      .ng-valid[required], .ng-valid.required  {
+ *        border-left: 5px solid #42A948;
+ *      }
+ *      .ng-invalid:not(form)  {
+ *          border-left: 5px solid #a94442;
+ *      }
  */

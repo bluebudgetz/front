@@ -6,7 +6,7 @@ import {onError} from 'apollo-link-error';
 import {concat} from "apollo-link";
 import {environment} from '../environments/environment';
 
-export function createApollo(httpLink: HttpLink) {
+function createApollo(httpLink: HttpLink) {
     const mainLink = httpLink.create({
         uri: environment.graphQLURL,
         withCredentials: true,
@@ -29,8 +29,9 @@ export function createApollo(httpLink: HttpLink) {
 
     return {
         link: concat(errorLink, mainLink),
-        cache: new InMemoryCache(),
+        cache: new InMemoryCache({resultCaching: false}),
         defaultOptions: {
+            fetchPolicy: '',
             watchQuery: {
                 errorPolicy: 'all'
             }
@@ -43,7 +44,14 @@ export function createApollo(httpLink: HttpLink) {
     providers: [
         {
             provide: APOLLO_OPTIONS,
-            useFactory: createApollo,
+            useFactory: (httpLink: HttpLink) => {
+                return {
+                    cache: new InMemoryCache(),
+                    link: httpLink.create({
+                        uri: "https://o5x5jzoo7z.sse.codesandbox.io/graphql"
+                    })
+                }
+            },
             deps: [HttpLink],
         },
     ],

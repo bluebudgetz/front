@@ -8,9 +8,9 @@ import {Component} from '@angular/core';
 export class AppComponent {
     sideBarOpen = false;
     menu = [
-        { path: "/accounts", icon: "balance-scale", text: "Balance" },
-        { path: "/transactions", icon: "list-alt", text: "Transactions" },
-        { path: "/settings", icon: "cog", text: "Settings" },
-        { path: "/about", icon: "info-circle", text: "About" },
+        { path: "/accounts", icon: "account_balance", text: "Balance" },
+        { path: "/transactions", icon: "view_list", text: "Transactions" },
+        { path: "/settings", icon: "settings", text: "Settings" },
+        { path: "/about", icon: "info", text: "About" },
     ];
 }

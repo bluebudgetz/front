@@ -4,7 +4,7 @@ import {AccountsComponent} from "./accounts/accounts.component";
 import {TransactionsComponent} from "./transactions/transactions.component";
 
 const routes: Routes = [
-    {path: '', redirectTo: '/accounts', pathMatch: 'full'},
+    {path: '', redirectTo: '/accounts', pathMatch: 'full'}, // TODO: root URL should be a dashboard
     {path: 'accounts', component: AccountsComponent},
     {path: 'transactions', component: TransactionsComponent},
 ];

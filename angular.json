@@ -27,11 +27,7 @@
                             "src/assets"
                         ],
                         "styles": [
-                            "src/theme/reboot/bootstrap-reboot.min.css",
-                            "node_modules/primeicons/primeicons.css",
-                            "src/theme/nova-light/theme.scss",
-                            "node_modules/primeng/resources/primeng.min.css",
-                            "node_modules/primeflex/primeflex.scss",
+                            "src/theme.scss",
                             "src/styles.scss"
                         ],
                         "stylePreprocessorOptions": {
@@ -94,11 +90,7 @@
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
                         "styles": [
-                            "src/theme/reboot/bootstrap-reboot.min.css",
-                            "node_modules/primeicons/primeicons.css",
-                            "src/theme/nova-light/theme.scss",
-                            "node_modules/primeng/resources/primeng.min.css",
-                            "node_modules/primeflex/primeflex.scss",
+                            "src/theme.scss",
                             "src/styles.scss"
                         ],
                         "stylePreprocessorOptions": {

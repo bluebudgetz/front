@@ -1,63 +1,31 @@
-@import "variables";
+@import '~src/theme.scss';
 
 nav {
-    background-color: $menuBgColor;
-    margin-top: 1em;
-    a {
-        color: $menuitemTextColor;
-        padding: 1em;
-        text-decoration: none;
-        &:hover {
-            background-color: $menuitemHoverBgColor;
-            color: $menuitemHoverTextColor;
-        }
-        &.active {
-            background-color: $menuitemActiveBgColor;
-            color: #1f7ed0;
-            font-weight: bold;
-        }
-        > span:nth-child(1) {
-            min-width: 2em;
-            opacity: 0.7;
-            text-align: center;
-        }
+    min-width: 15em;
+    .mat-list-base .mat-list-item.active {
+        background-color: mat-color($primary, 500);
+        color: mat-color($primary, '500-contrast');
     }
 }
 
-.root {
-    height: 100vh;
-    header {
-        background-color: $primaryColor;
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
-        color: $primaryTextColor;
-        padding: 0.3em;
-        z-index: 999;
-        .menu {
-            cursor: pointer;
-            margin-left: 0.5em;
-        }
-        .brand {
-            margin: 0 0.5em;
-            text-shadow: #000 1px 1px 1px;
-        }
-        .slogan {
-            font-style: italic;
-            text-shadow: #000 1px 1px 1px;
-        }
-        .user-menu {
-            margin-right: 1em;
-        }
+header {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+    .brand {
+        text-shadow: #000 1px 1px 1px;
+        text-transform: uppercase;
     }
-    main {
-        padding: 1em;
-    }
-    footer {
-        background-color: $panelHeaderBgColor;
-        border-top: $panelHeaderBorder;
-        color: $panelHeaderTextColor;
-        padding: 0.3em;
-        a, a:visited, a:hover {
-            color: $panelHeaderTextColor;
-        }
+}
+
+main {
+    padding: 1em;
+}
+
+footer {
+    background-color: mat-color($primary, 50);
+    box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.2);
+    color: mat-color($primary, 50-contrast);
+    padding: 0.3em;
+    a, a:visited, a:hover {
+        color: inherit;
     }
 }

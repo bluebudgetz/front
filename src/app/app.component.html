@@ -1,31 +1,51 @@
-<p-sidebar [(visible)]="sideBarOpen">
-    <nav class="p-grid p-dir-col">
-        <a *ngFor="let m of menu" [routerLink]="m.path" routerLinkActive="active" class="p-col" (click)="sideBarOpen=false">
-            <span class="p-col"><fa-icon [icon]="m.icon"></fa-icon></span>
-            <span class="p-col">{{m.text}}</span>
-        </a>
-    </nav>
-</p-sidebar>
+<mat-menu #userMenu="matMenu">
+<!-- TODO: implement user menu (login/logout, profile-->
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Help</button>
+</mat-menu>
 
-<div class="root p-grid p-dir-col p-nogutter">
-    <header class="p-col-fixed p-grid p-nogutter p-align-center">
-        <div class="menu p-col-fixed">
-            <fa-icon icon="bars" size="lg" (click)="sideBarOpen = !sideBarOpen"></fa-icon>
+<mat-sidenav-container hasBackdrop="true">
+    <mat-sidenav mode="over" [(opened)]="sideBarOpen">
+        <nav>
+            <mat-nav-list>
+                <h3 mat-subheader>Navigation</h3>
+                <a mat-list-item *ngFor="let m of menu" routerLinkActive="active" [routerLink]="m.path" (click)="sideBarOpen=false">
+                    <mat-icon matListIcon>{{ m.icon }}</mat-icon>
+                    {{ m.text }}
+                </a>
+            </mat-nav-list>
+        </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div fxLayout="column" style="height: 100vh" class="mat-typography">
+
+            <header fxFlex="none" fxLayout="column">
+                <mat-toolbar color="primary" fxLayoutGap="0.5em">
+                    <button mat-icon-button (click)="sideBarOpen = !sideBarOpen" fxFlex="none">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                    <h1 fxFlex="none" class="brand">Bluebudgetz</h1>
+                    <div fxFlex="grow">&nbsp;</div>
+                    <button mat-icon-button fxFlex="none" [matMenuTriggerFor]="userMenu">
+                        <mat-icon>account_circle</mat-icon>
+                    </button>
+                </mat-toolbar>
+            </header>
+
+            <main fxFlex="grow">
+                <router-outlet></router-outlet>
+            </main>
+
+            <footer fxFlex="none" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="1em">
+                <span>Copyright&nbsp;<fa-icon [icon]="['far', 'copyright']" size="lg"></fa-icon> 2019 Arik Kfir</span>
+                <a href="https://www.linkedin.com/in/arikkfir">
+                    <fa-icon [icon]="['fab','linkedin']" size="lg"></fa-icon>
+                </a>
+                <a href="https://github.com/arikkfir">
+                    <fa-icon [icon]="['fab','github']" size="lg"></fa-icon>
+                </a>
+            </footer>
+
         </div>
-        <h1 class="brand p-col-fixed">Bluebudgetz</h1>
-        <div class="p-col">&nbsp;</div>
-        <div class="user-menu p-col-fixed">
-            <fa-icon icon="user-circle" size="2x"></fa-icon>
-        </div>
-    </header>
-    <main class="p-col">
-        <router-outlet></router-outlet>
-    </main>
-    <footer class="p-col-fixed">
-        Copyright&nbsp;<fa-icon [icon]="['far', 'copyright']" size="lg"></fa-icon>&nbsp;2019 Arik Kfir
-        <span>&nbsp;&nbsp;&nbsp;</span>
-        <a href="https://www.linkedin.com/in/arikkfir"><fa-icon [icon]="['fab','linkedin']" size="lg"></fa-icon></a>
-        <span>&nbsp;</span>&nbsp;
-        <a href="https://github.com/arikkfir"><fa-icon [icon]="['fab','github']" size="lg"></fa-icon></a>
-    </footer>
-</div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

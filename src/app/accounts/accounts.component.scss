@@ -5,3 +5,14 @@
 .negative {
     color: red !important;
 }
+
+.invisible {
+    display: none;
+}
+
+.mat-tree ul,
+.mat-tree li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+}

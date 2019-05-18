@@ -1,0 +1,58 @@
+@import '~@angular/material/theming';
+
+// Define the palettes for your theme using the Material Design palettes imported above.
+// For each palette, you can optionally specify a default, lighter, and darker hue.
+// Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($mat-indigo);
+$app-accent: mat-palette($mat-deep-purple);
+$app-warn: mat-palette($mat-amber);
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+// Variables for consumption in components (see node_modules/@angular/material/_theming.scss)
+// Palette composition: https://material.io/archive/guidelines/style/color.html#color-color-palette
+
+// Primary is the most frequently used color in an application (as per Material Design guidelines)
+// This means that highlighted elements are usually colored with this color.
+$primary: map-get($app-theme, primary);
+
+// Accent is the color we used to accent something against the backdrop of the primary color.
+// It is optional, but commonly used as the color for turned-on levers, unique buttons, etc.
+$accent: map-get($app-theme, accent);
+
+// Warn is used in components meant to convey some sort of a warning (duh!).
+$warn: map-get($app-theme, warn);
+
+// Some predefined colors based on the primary/accent/warn colors chosen for our themes have already been chosen
+// by Material Design for us:
+$background: map-get($app-theme, background);
+$background-status-bar: map-get($background, status-bar);
+$background-app-bar: map-get($background, app-bar);
+$background-background: map-get($background, background);
+$background-hover: map-get($background, hover);
+$background-card: map-get($background, card);
+$background-dialog: map-get($background, dialog);
+$background-disabled-button: map-get($background, disabled-button);
+$background-raised-button: map-get($background, raised-button);
+$background-focused-button: map-get($background, focused-button);
+$background-selected-button: map-get($background, selected-button);
+$background-selected-disabled-button: map-get($background, selected-disabled-button);
+$background-disabled-button-toggle: map-get($background, disabled-button-toggle);
+$background-unselected-chip: map-get($background, unselected-chip);
+$background-disabled-list-option: map-get($background, disabled-list-option);
+
+$foreground: map-get($app-theme, foreground);
+$foreground-base: map-get($foreground, base);
+$foreground-divider: map-get($foreground, divider);
+$foreground-dividers: map-get($foreground, dividers);
+$foreground-disabled: map-get($foreground, disabled);
+$foreground-disabled-button: map-get($foreground, disabled-button);
+$foreground-disabled-text: map-get($foreground, disabled-text);
+$foreground-elevation: map-get($foreground, elevation);
+$foreground-hint-text: map-get($foreground, hint-text);
+$foreground-secondary-text: map-get($foreground, secondary-text);
+$foreground-icon: map-get($foreground, icon);
+$foreground-icons: map-get($foreground, icons);
+$foreground-text: map-get($foreground, text);
+$foreground-slider-min: map-get($foreground, slider-min);
+$foreground-slider-off: map-get($foreground, slider-off);
+$foreground-slider-off-active: map-get($foreground, slider-off-active);
