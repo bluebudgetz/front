@@ -56,3 +56,16 @@ $foreground-text: map-get($foreground, text);
 $foreground-slider-min: map-get($foreground, slider-min);
 $foreground-slider-off: map-get($foreground, slider-off);
 $foreground-slider-off-active: map-get($foreground, slider-off-active);
+
+/*
+ * Custom classes.
+ */
+.bold {
+    font-weight: bold;
+}
+.text-align-right {
+    text-align: right;
+}
+.invisible {
+    visibility: hidden;
+}

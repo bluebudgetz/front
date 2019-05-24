@@ -1,3 +1,9 @@
+@import "~src/theme";
+
+.neutral {
+    opacity: 0.5;
+}
+
 .positive {
     color: green !important;
 }
@@ -6,12 +12,26 @@
     color: red !important;
 }
 
-.invisible {
-    display: none;
+.mat-divider.header {
+    border-top-color: mat-color($accent, 500);
+    border-top-width: 2px;
 }
 
-.mat-tree ul,
-.mat-tree li {
+.row {
+    .incoming {
+        width: 7em;
+    }
+
+    .outgoing {
+        width: 7em;
+    }
+
+    .balance {
+        width: 7em;
+    }
+}
+
+.mat-tree ul, .mat-tree li {
     margin-top: 0;
     margin-bottom: 0;
     list-style-type: none;
