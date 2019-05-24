@@ -66,6 +66,7 @@
         "use-host-property-decorator": true,
         "no-input-rename": true,
         "no-output-rename": true,
+        "no-string-literal": false,
         "use-life-cycle-interface": true,
         "use-pipe-transform-interface": true,
         "component-class-suffix": true,
