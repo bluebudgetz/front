@@ -13,6 +13,10 @@ if (environment.production) {
     enableProdMode();
 }
 
+// Fix Hebrew local to use the real NIS symbol ("₪") and place the minus sign (for negatives) in the correct position
+hebrew[14][2] = "¤ #,##0.00";
+hebrew[17]["NIS"] = [hebrew[15]];
+
 registerLocaleData(english, 'en-US');
 registerLocaleData(hebrew, 'he-IL');
 
