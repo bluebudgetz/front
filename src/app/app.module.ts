@@ -10,7 +10,7 @@ import {LayoutModule} from '@angular/cdk/layout';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {IconsModule} from "./icons.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { MaterialModule } from './material.module';
+import {MaterialModule} from './material.module';
 
 @NgModule({
     declarations: [
