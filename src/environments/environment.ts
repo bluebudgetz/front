@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    graphQLURL: "http://localhost:3001/query"
+    apiURL: "http://localhost:3001"
 };
 
 /*

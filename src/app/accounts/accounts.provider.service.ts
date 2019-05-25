@@ -5,11 +5,7 @@ import {DataSource} from "@angular/cdk/table";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {CollectionViewer, SelectionChange} from "@angular/cdk/collections";
 import {delay, map} from "rxjs/operators";
-
-/**
- * @todo infer accounts URL from Angular environment.
- */
-const ACCOUNTS_URL = "http://localhost:3001/v1/accounts";
+import {environment} from "../../environments/environment";
 
 export class AccountDTO {
     constructor(public id: number,
@@ -63,7 +59,7 @@ export class AccountsDataSource implements DataSource<Account> {
     }
 
     refresh() {
-        this.http.get<AccountDTO[]>(ACCOUNTS_URL)
+        this.http.get<AccountDTO[]>(environment.apiURL + "/v1/accounts")
             .pipe(delay(1000))
             .subscribe(
                 accounts => this.data = accounts.map(acc => new Account(acc, 0)),
@@ -110,7 +106,7 @@ export class AccountsDataSource implements DataSource<Account> {
         }
 
         node.loading = true;
-        this.http.get<AccountDTO[]>(ACCOUNTS_URL + `/${node.id}/children`)
+        this.http.get<AccountDTO[]>(environment.apiURL + `/v1/accounts/${node.id}/children`)
             .pipe(delay(1000))
             .subscribe(
                 accounts => {
