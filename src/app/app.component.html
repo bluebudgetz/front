@@ -1,51 +1,52 @@
-<mat-menu #userMenu="matMenu">
-<!-- TODO: implement user menu (login/logout, profile-->
-    <button mat-menu-item>Settings</button>
-    <button mat-menu-item>Help</button>
-</mat-menu>
+<block-ui>
+    <mat-menu #userMenu="matMenu">
+        <!-- TODO: implement user menu (login/logout, profile-->
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Help</button>
+    </mat-menu>
+    <mat-sidenav-container hasBackdrop="true">
+        <mat-sidenav mode="over" [(opened)]="sideBarOpen">
+            <nav>
+                <mat-nav-list>
+                    <h3 mat-subheader>Navigation</h3>
+                    <a mat-list-item *ngFor="let m of menu" routerLinkActive="active" [routerLink]="m.path" (click)="sideBarOpen=false">
+                        <mat-icon matListIcon>{{ m.icon }}</mat-icon>
+                        {{ m.text }}
+                    </a>
+                </mat-nav-list>
+            </nav>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div fxLayout="column" style="height: 100vh" class="mat-typography">
 
-<mat-sidenav-container hasBackdrop="true">
-    <mat-sidenav mode="over" [(opened)]="sideBarOpen">
-        <nav>
-            <mat-nav-list>
-                <h3 mat-subheader>Navigation</h3>
-                <a mat-list-item *ngFor="let m of menu" routerLinkActive="active" [routerLink]="m.path" (click)="sideBarOpen=false">
-                    <mat-icon matListIcon>{{ m.icon }}</mat-icon>
-                    {{ m.text }}
-                </a>
-            </mat-nav-list>
-        </nav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div fxLayout="column" style="height: 100vh" class="mat-typography">
+                <header fxFlex="none" fxLayout="column">
+                    <mat-toolbar color="primary" fxLayoutGap="0.5em">
+                        <button mat-icon-button (click)="sideBarOpen = !sideBarOpen" fxFlex="none">
+                            <mat-icon>menu</mat-icon>
+                        </button>
+                        <h1 fxFlex="none" class="brand">Bluebudgetz</h1>
+                        <div fxFlex="grow">&nbsp;</div>
+                        <button mat-icon-button fxFlex="none" [matMenuTriggerFor]="userMenu">
+                            <mat-icon>account_circle</mat-icon>
+                        </button>
+                    </mat-toolbar>
+                </header>
 
-            <header fxFlex="none" fxLayout="column">
-                <mat-toolbar color="primary" fxLayoutGap="0.5em">
-                    <button mat-icon-button (click)="sideBarOpen = !sideBarOpen" fxFlex="none">
-                        <mat-icon>menu</mat-icon>
-                    </button>
-                    <h1 fxFlex="none" class="brand">Bluebudgetz</h1>
-                    <div fxFlex="grow">&nbsp;</div>
-                    <button mat-icon-button fxFlex="none" [matMenuTriggerFor]="userMenu">
-                        <mat-icon>account_circle</mat-icon>
-                    </button>
-                </mat-toolbar>
-            </header>
+                <main fxFlex="grow">
+                    <router-outlet></router-outlet>
+                </main>
 
-            <main fxFlex="grow">
-                <router-outlet></router-outlet>
-            </main>
+                <footer fxFlex="none" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="1em">
+                    <span>Copyright&nbsp;<fa-icon [icon]="['far', 'copyright']" size="lg"></fa-icon> 2019 Arik Kfir</span>
+                    <a href="https://www.linkedin.com/in/arikkfir">
+                        <fa-icon [icon]="['fab','linkedin']" size="lg"></fa-icon>
+                    </a>
+                    <a href="https://github.com/arikkfir">
+                        <fa-icon [icon]="['fab','github']" size="lg"></fa-icon>
+                    </a>
+                </footer>
 
-            <footer fxFlex="none" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="1em">
-                <span>Copyright&nbsp;<fa-icon [icon]="['far', 'copyright']" size="lg"></fa-icon> 2019 Arik Kfir</span>
-                <a href="https://www.linkedin.com/in/arikkfir">
-                    <fa-icon [icon]="['fab','linkedin']" size="lg"></fa-icon>
-                </a>
-                <a href="https://github.com/arikkfir">
-                    <fa-icon [icon]="['fab','github']" size="lg"></fa-icon>
-                </a>
-            </footer>
-
-        </div>
-    </mat-sidenav-content>
-</mat-sidenav-container>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</block-ui>

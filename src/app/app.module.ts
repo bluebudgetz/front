@@ -11,6 +11,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {IconsModule} from "./icons.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from './material.module';
+import {BlockUIModule} from "ng-block-ui";
 
 @NgModule({
     declarations: [
@@ -29,6 +30,7 @@ import {MaterialModule} from './material.module';
         FlexLayoutModule,
         IconsModule,
         MaterialModule,
+        BlockUIModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

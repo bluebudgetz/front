@@ -1,10 +1,10 @@
-<mat-card>
+<mat-card *blockUI="'accountsTree'">
     <mat-card-header>
         <mat-card-title>Accounts</mat-card-title>
         <mat-card-subtitle>Your accounts tree, with current balance status.</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <div fxLayout="row-reverse" fxLayoutGap="1vw" fxLayoutAlign="start center" class="row header bold">
+        <div fxLayout="row-reverse" fxLayoutGap="1vw" fxLayoutAlign="start center" class="bold">
             <div class="name" fxFlexOrder="4" fxFlex="1 1 auto">
                 <button class="invisible" mat-icon-button>
                     <mat-icon class="mat-icon-rtl-mirror">chevron_right</mat-icon>
@@ -55,3 +55,4 @@
         </button>
     </mat-card-actions>
 </mat-card>
+
