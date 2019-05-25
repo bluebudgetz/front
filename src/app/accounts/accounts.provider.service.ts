@@ -84,7 +84,7 @@ export class AccountsDataSource implements DataSource<Account> {
     }
 
     disconnect(collectionViewer: CollectionViewer): void {
-        // TODO: implement "AccountsDataSource.disconnect(CollectionViewer)"
+        // no-op
     }
 
     _handleTreeControlExpansionModelChange(change: SelectionChange<Account>) {
