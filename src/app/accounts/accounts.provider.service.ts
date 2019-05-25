@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {DataSource} from "@angular/cdk/table";
 import {FlatTreeControl} from "@angular/cdk/tree";
 import {CollectionViewer, SelectionChange} from "@angular/cdk/collections";
-import {map} from "rxjs/operators";
+import {delay, map} from "rxjs/operators";
 
 /**
  * @todo infer accounts URL from Angular environment.
@@ -64,6 +64,7 @@ export class AccountsDataSource implements DataSource<Account> {
 
     refresh() {
         this.http.get<AccountDTO[]>(ACCOUNTS_URL)
+            .pipe(delay(1000))
             .subscribe(
                 accounts => this.data = accounts.map(acc => new Account(acc, 0)),
                 error => {
@@ -109,37 +110,33 @@ export class AccountsDataSource implements DataSource<Account> {
         }
 
         node.loading = true;
-        setTimeout(
-            () => {
-                this.http.get<AccountDTO[]>(ACCOUNTS_URL + `/${node.id}/children`)
-                    .subscribe(
-                        accounts => {
-                            if (expand) {
-                                const nodes = accounts.map(acc => new Account(acc, node.level + 1));
-                                this.data.splice(index + 1, 0, ...nodes);
-                            } else {
-                                // delete all nodes following this parent in the data array, until the next sibling
-                                let count = 0;
-                                for (let i = index + 1; i < this.data.length && this.data[i].level > node.level; i++, count++) {
-                                }
-                                this.data.splice(index + 1, count);
-                            }
+        this.http.get<AccountDTO[]>(ACCOUNTS_URL + `/${node.id}/children`)
+            .pipe(delay(1000))
+            .subscribe(
+                accounts => {
+                    if (expand) {
+                        const nodes = accounts.map(acc => new Account(acc, node.level + 1));
+                        this.data.splice(index + 1, 0, ...nodes);
+                    } else {
+                        // delete all nodes following this parent in the data array, until the next sibling
+                        let count = 0;
+                        for (let i = index + 1; i < this.data.length && this.data[i].level > node.level; i++, count++) {
+                        }
+                        this.data.splice(index + 1, count);
+                    }
 
-                            // notify the change
-                            this.dataChange.next(this.data);
-                            node.loading = false;
-                        },
-                        error => {
-                            if (error.error instanceof ErrorEvent) {
-                                console.error(
-                                    `JavaScript error occurred while fetching child accounts of '${node.id}': `, error.error.message);
-                            } else {
-                                console.error(`Backend request for child accounts of '${node.id}' failed: `, error);
-                            }
-                            // TODO: notify user (e.g. "Oops, that's embarrassing! Failed fetching your accounts, please try again.")
-                        });
-            },
-            1000
-        );
+                    // notify the change
+                    this.dataChange.next(this.data);
+                    node.loading = false;
+                },
+                error => {
+                    if (error.error instanceof ErrorEvent) {
+                        console.error(
+                            `JavaScript error occurred while fetching child accounts of '${node.id}': `, error.error.message);
+                    } else {
+                        console.error(`Backend request for child accounts of '${node.id}' failed: `, error);
+                    }
+                    // TODO: notify user (e.g. "Oops, that's embarrassing! Failed fetching your accounts, please try again.")
+                });
     }
 }
