@@ -4,44 +4,11 @@ import {HttpClient} from "@angular/common/http";
 import {BlockUI, NgBlockUI} from "ng-block-ui";
 import {MatSnackBar} from "@angular/material";
 import {environment} from "../../environments/environment";
-import {catchError, delay, map, retry, tap} from "rxjs/operators";
+import {catchError, map, retry, tap} from "rxjs/operators";
 import {DataSource} from "@angular/cdk/table";
 import {BehaviorSubject, merge, Observable, of} from "rxjs";
 import {CollectionViewer, SelectionChange} from "@angular/cdk/collections";
-
-export class AccountDTO {
-    constructor(public id: number,
-                public name: string,
-                public childCount: number,
-                public incoming: number,
-                public outgoing: number) {
-    }
-}
-
-export class Account {
-    constructor(private dto: AccountDTO, public level = 1, public loading = false) {
-    }
-
-    get id(): number {
-        return this.dto.id;
-    }
-
-    get name(): string {
-        return this.dto.name;
-    }
-
-    get incoming(): number {
-        return this.dto.incoming;
-    }
-
-    get outgoing(): number {
-        return this.dto.outgoing;
-    }
-
-    get expandable(): boolean {
-        return this.dto.childCount > 0;
-    }
-}
+import {Account, AccountDTO} from "./account";
 
 @Injectable()
 class AccountsDataSource implements DataSource<Account> {
@@ -75,7 +42,6 @@ class AccountsDataSource implements DataSource<Account> {
                 }
                 return of([]);
             }))
-            .pipe(delay<Account[]>(1000))
             .pipe(tap(accounts => this.data = accounts))
             .subscribe(() => this.blockUI.stop());
     }
@@ -123,7 +89,6 @@ class AccountsDataSource implements DataSource<Account> {
                 }
                 return of([]);
             }))
-            .pipe(delay<Account[]>(1000))
             .pipe(tap(accounts => {
                 if (expand) {
                     this.data.splice(index + 1, 0, ...accounts);

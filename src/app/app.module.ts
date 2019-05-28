@@ -12,6 +12,7 @@ import {IconsModule} from "./icons.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from './material.module';
 import {BlockUIModule} from "ng-block-ui";
+import {AppHttpModule} from "./http.module";
 
 @NgModule({
     declarations: [
@@ -22,7 +23,7 @@ import {BlockUIModule} from "ng-block-ui";
     imports: [
         BrowserModule,
         BrowserAnimationsModule, // or NoopAnimationsModule to disable animations
-        HttpClientModule,
+        AppHttpModule,
         RoutingModule,
         FormsModule,
         ReactiveFormsModule,
