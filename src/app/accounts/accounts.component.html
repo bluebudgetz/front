@@ -47,9 +47,9 @@
                         {{node.outgoing | currency : 'NIS' : 'symbol' : '1.2' : 'he-IL' }}
                     </div>
                     <div class="balance bold text-align-right" fxFlexOrder="1" fxFlex="none"
-                         [class.positive]="node.incoming - node.outgoing > 0"
-                         [class.negative]="node.incoming - node.outgoing <= 0">
-                        {{node.incoming - node.outgoing | currency : 'NIS' : 'symbol' : '1.2' : 'he-IL' }}
+                         [class.positive]="node.balance > 0"
+                         [class.negative]="node.balance <= 0">
+                        {{node.balance | currency : 'NIS' : 'symbol' : '1.2' : 'he-IL' }}
                     </div>
                 </div>
             </mat-tree-node>

@@ -3,7 +3,8 @@ export class AccountDTO {
                 public name: string,
                 public childCount: number,
                 public incoming: number,
-                public outgoing: number) {
+                public outgoing: number,
+                public balance: number) {
     }
 }
 
@@ -25,6 +26,10 @@ export class Account {
 
     get outgoing(): number {
         return this.dto.outgoing;
+    }
+
+    get balance(): number {
+        return this.dto.balance;
     }
 
     get expandable(): boolean {
