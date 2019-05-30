@@ -1,9 +1,12 @@
 <mat-card *blockUI="'accountsTree'">
+
     <mat-card-header>
         <mat-card-title>Accounts</mat-card-title>
         <mat-card-subtitle>Your accounts tree, with current balance status.</mat-card-subtitle>
     </mat-card-header>
+
     <mat-card-content>
+
         <div fxLayout="row-reverse" fxLayoutGap="1vw" fxLayoutAlign="start center" class="bold">
             <div class="name" fxFlexOrder="4" fxFlex="1 1 auto">
                 <button class="invisible" mat-icon-button>
@@ -15,9 +18,12 @@
             <div class="outgoing text-align-right" fxFlexOrder="2" fxFlex="none">Outgoing</div>
             <div class="balance text-align-right" fxFlexOrder="1" fxFlex="none">Balance</div>
         </div>
+
         <mat-divider class="header"></mat-divider>
+
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
             <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+
                 <div fxLayout="row-reverse" fxFlex="1 1 auto" fxLayoutAlign="start center" class="row">
                     <div class="name" fxFlexOrder="5" fxFlex="0 1 auto">
                         <button [class.invisible]="!node.expandable" mat-icon-button matTreeNodeToggle [disabled]="node.loading">
@@ -48,11 +54,14 @@
                 </div>
             </mat-tree-node>
         </mat-tree>
+
     </mat-card-content>
+
     <mat-card-actions fxLayout="row" fxLayoutGap="1vw" fxLayoutAlign="end center">
         <button mat-icon-button (click)="refresh()">
             <mat-icon>refresh</mat-icon>
         </button>
     </mat-card-actions>
+
 </mat-card>
 
