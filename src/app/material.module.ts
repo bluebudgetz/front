@@ -41,8 +41,10 @@ import {
     MatTooltipModule,
     MatTreeModule
 } from "@angular/material";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 const modules = [
+    DragDropModule,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
