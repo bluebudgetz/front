@@ -17,10 +17,6 @@
     border-top-width: 2px;
 }
 
-.row {
-    border-bottom: 1px solid mat-color($accent, 50);
-}
-
 .incoming {
     width: 7em;
 }
@@ -31,4 +27,30 @@
 
 .balance {
     width: 7em;
+}
+
+.mat-tree-node {
+    background-color: white;
+    user-select: none;
+    cursor: move;
+    .row {
+        border-bottom: 1px solid mat-color($accent, 50);
+    }
+    &.cdk-drag-preview { // while dragging
+        @include mat-elevation(12);
+        .row {
+            border-bottom: none;
+        }
+    }
+    &.cdk-drag-placeholder { // potential drop area
+        opacity: 0;
+    }
+}
+
+.cdk-drop-list-dragging .mat-tree-node:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-animating {
+    transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
 }

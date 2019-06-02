@@ -21,8 +21,8 @@
 
         <mat-divider class="header"></mat-divider>
 
-        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" cdkDropList (cdkDropListDropped)="drop($event)">
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding cdkDrag [cdkDragData]="node">
 
                 <div fxLayout="row-reverse" fxFlex="1 1 auto" fxLayoutAlign="start center" class="row">
                     <div class="name" fxFlexOrder="5" fxFlex="0 1 auto">

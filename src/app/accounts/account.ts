@@ -9,7 +9,10 @@ export class AccountDTO {
 }
 
 export class Account {
-    constructor(private dto: AccountDTO, public level = 1, public loading = false) {
+    level = 0;
+    children: Account[] = null;
+
+    constructor(private dto: AccountDTO, public loading = false, public expanded = false) {
     }
 
     get id(): number {
@@ -18,6 +21,10 @@ export class Account {
 
     get name(): string {
         return this.dto.name;
+    }
+
+    get childCount(): number {
+        return this.dto.childCount;
     }
 
     get incoming(): number {
