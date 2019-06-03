@@ -1,3 +1,5 @@
+import {BehaviorSubject} from "rxjs";
+
 export class AccountDTO {
     constructor(public id: number,
                 public name: string,
@@ -10,9 +12,9 @@ export class AccountDTO {
 
 export class Account {
     level = 0;
-    children: Account[] = null;
+    readonly children = new BehaviorSubject<Account[]>(null);
 
-    constructor(private dto: AccountDTO, public loading = false, public expanded = false) {
+    constructor(private dto: AccountDTO, public loading = false) {
     }
 
     get id(): number {
