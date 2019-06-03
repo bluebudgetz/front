@@ -12,8 +12,6 @@
             "element",
             "app",
             "kebab-case"
-        ],
-        "variable-name": false,
-        "no-trailing-whitespace": false
+        ]
     }
 }
