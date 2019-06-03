@@ -69,3 +69,32 @@ $foreground-slider-off-active: map-get($foreground, slider-off-active);
 .invisible {
     visibility: hidden;
 }
+.mat-snack-bar-container {
+    &.error {
+        background-color: mat-color($mat-red, 500);
+        color: mat-contrast($mat-red, 500);
+        .mat-button {
+            background-color: mat-color($mat-red, 900);
+            color: mat-contrast($mat-red, 900);
+        }
+    }
+    &.warn {
+        background-color: mat-color($mat-yellow, 200);
+        color: mat-contrast($mat-yellow, 200);
+        .mat-button {
+            background-color: mat-color($mat-yellow, 600);
+            color: mat-contrast($mat-yellow, 600);
+        }
+    }
+    &.info {
+        background-color: mat-color($mat-green, 200);
+        color: mat-contrast($mat-green, 200);
+        .mat-button {
+            background-color: mat-color($mat-green, 600);
+            color: mat-contrast($mat-green, 600);
+        }
+    }
+    .mat-button {
+        margin-left: 1em;
+    }
+}

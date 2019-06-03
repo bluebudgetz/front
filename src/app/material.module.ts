@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {
+    MAT_SNACK_BAR_DEFAULT_OPTIONS,
     MatAutocompleteModule,
     MatBadgeModule,
     MatBottomSheetModule,
@@ -91,6 +92,15 @@ const modules = [
     declarations: [],
     imports: modules,
     exports: modules,
+    providers: [
+        {
+            provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {
+                horizontalPosition: "end",
+                duration: 60 * 1000,
+                verticalPosition: "top",
+            }
+        }
+    ]
 })
 export class MaterialModule {
 }
