@@ -64,4 +64,8 @@ export class AccountsService {
     updateAccountParent(id: number, parentId: number | null): Observable<void> {
         return this.http.patch<void>(`${environment.apiURL}/v1/accounts/${id}`, {parentId});
     }
+
+    deleteAccount(id: number): Observable<void> {
+        return this.http.delete<void>(`${environment.apiURL}/v1/accounts/${id}`);
+    }
 }

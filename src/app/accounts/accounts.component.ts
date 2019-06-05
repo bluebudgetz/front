@@ -97,6 +97,24 @@ export class AccountsComponent implements OnInit {
     }
 
     deleteAccount(event: MouseEvent, account: Account) {
-        // TODO: implement "AccountsComponent.deleteAccount(event, account)"
+        this.accountsService.deleteAccount(account.id)
+            .subscribe(
+                () => this.refresh(this.treeControl.expansionModel.selected.slice().map(acc => acc.id)),
+                error => {
+                    console.error("Failed deleting account: ", error);
+
+                    let message = "Ooops, that's embarrassing! We have encountered an unexpected error.";
+                    if (error instanceof HttpErrorResponse) {
+                        if (error.status >= 400 && error.status <= 499) {
+                            message = `${error.statusText} (${error.status})`;
+                        } else if (error.status >= 500) {
+                            message = "Ooops, that's embarrassing! It seems our servers have encountered an unexpected error.";
+                        } else {
+                            message = "Ooops, we could not communicate with our servers. Are you online?";
+                        }
+                    }
+                    this.notifyService.error(message);
+                }
+            );
     }
 }
