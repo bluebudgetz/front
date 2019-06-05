@@ -1,0 +1,29 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" style="height: 50vh" *blockUI="'bottomAccountsTree'">
+    <mat-nested-tree-node *matTreeNodeDef="let node">
+        <div fxLayout="column" fxFlex="1 1 auto">
+            <div fxLayout="row-reverse" fxFlex="1 1 auto" fxLayoutAlign="start center" class="row" (click)="selectAccount($event, node)">
+                <div class="name" fxFlexOrder="5" fxFlex="0 1 auto">
+                    <button [class.invisible]="!node.expandable" mat-icon-button matTreeNodeToggle
+                            [disabled]="node.loading">
+                        <mat-icon class="mat-icon-rtl-mirror">
+                            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                    </button>
+                    {{node.name}}
+                </div>
+                <div fxFlexOrder="4" fxFlex="1 1 auto" style="margin-left: 1em">
+                    <mat-progress-spinner *ngIf="node.loading" diameter="16"
+                                          mode="indeterminate"></mat-progress-spinner>
+                </div>
+            </div>
+            <ul *ngIf="node.expandable && treeControl.isExpanded(node)" class="children">
+                <ng-container matTreeNodeOutlet></ng-container>
+            </ul>
+        </div>
+    </mat-nested-tree-node>
+</mat-tree>
+
+<button mat-icon-button (click)="selectAccount($event, null)">
+    <mat-icon class="mat-icon-rtl-mirror">delete</mat-icon>
+    Move to Top
+</button>

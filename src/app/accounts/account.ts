@@ -2,6 +2,7 @@ import {BehaviorSubject} from "rxjs";
 
 export class AccountDTO {
     constructor(public id: number,
+                public parentId: number,
                 public name: string,
                 public childCount: number,
                 public incoming: number,
@@ -19,6 +20,10 @@ export class Account {
 
     get id(): number {
         return this.dto.id;
+    }
+
+    get parentId(): number {
+        return this.dto.parentId;
     }
 
     get name(): string {
@@ -43,5 +48,20 @@ export class Account {
 
     get expandable(): boolean {
         return this.dto.childCount > 0;
+    }
+
+    findChild(id: number): Account | null {
+        if (!this.children.value) {
+            throw new Error(`account ${this.name} does not have resolved children`);
+        } else if (this.id === id) {
+            return this;
+        } else {
+            const child = this.children.value.reduce((acc, c) => acc || c.findChild(id), null);
+            if (child) {
+                return child;
+            } else {
+                return null;
+            }
+        }
     }
 }

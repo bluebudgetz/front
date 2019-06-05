@@ -1,3 +1,16 @@
+<mat-menu #accountContextMenu="matMenu">
+    <ng-template matMenuContent let-account="account">
+        <button mat-menu-item (click)="moveAccount($event, account)">
+            <mat-icon>swap_horiz</mat-icon>
+            <span>Move To...</span>
+        </button>
+        <button mat-menu-item (click)="deleteAccount($event, account)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+        </button>
+    </ng-template>
+</mat-menu>
+
 <mat-card *blockUI="'accountsTree'">
 
     <mat-card-header>
@@ -22,9 +35,14 @@
         <mat-divider class="header"></mat-divider>
 
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-            <mat-nested-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+            <mat-nested-tree-node *matTreeNodeDef="let node">
                 <div fxLayout="column" fxFlex="1 1 auto">
                     <div fxLayout="row-reverse" fxFlex="1 1 auto" fxLayoutAlign="start center" class="row">
+                        <div class="more" fxFlexOrder="6" fxFlex="0 0 auto">
+                            <button mat-icon-button [matMenuTriggerFor]="accountContextMenu" [matMenuTriggerData]="{account: node}">
+                                <mat-icon class="mat-icon-rtl-mirror">more_vert</mat-icon>
+                            </button>
+                        </div>
                         <div class="name" fxFlexOrder="5" fxFlex="0 1 auto">
                             <button [class.invisible]="!node.expandable" mat-icon-button matTreeNodeToggle
                                     [disabled]="node.loading">

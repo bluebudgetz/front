@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {AppComponent} from './app.component';
 import {AccountsComponent} from './accounts/accounts.component';
@@ -13,11 +12,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MaterialModule} from './material.module';
 import {BlockUIModule} from "ng-block-ui";
 import {AppHttpModule} from "./http.module";
+import {AccountsTargetTreeSheetComponent} from "./accounts/accounts-target-tree.component";
 
 @NgModule({
     declarations: [
         AppComponent,
         AccountsComponent,
+        AccountsTargetTreeSheetComponent,
         TransactionsComponent,
     ],
     imports: [
@@ -32,6 +33,9 @@ import {AppHttpModule} from "./http.module";
         IconsModule,
         MaterialModule,
         BlockUIModule.forRoot()
+    ],
+    entryComponents: [
+        AccountsTargetTreeSheetComponent,
     ],
     providers: [],
     bootstrap: [AppComponent]
