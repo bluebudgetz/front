@@ -43,6 +43,7 @@ import {
     MatTreeModule
 } from "@angular/material";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 const modules = [
     DragDropModule,
@@ -66,6 +67,7 @@ const modules = [
     MatLineModule,
     MatListModule,
     MatMenuModule,
+    MatMomentDateModule,
     MatNativeDateModule,
     MatOptionModule,
     MatPaginatorModule,
@@ -85,7 +87,7 @@ const modules = [
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
 ];
 
 @NgModule({
