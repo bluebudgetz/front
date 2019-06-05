@@ -77,7 +77,7 @@ export class AccountsComponent implements OnInit {
                     .subscribe(
                         () => this.refresh(this.treeControl.expansionModel.selected.slice().map(account => account.id)),
                         error => {
-                            console.info("Failed fetching accounts: ", error);
+                            console.error("Failed updating parent account: ", error);
 
                             let message = "Ooops, that's embarrassing! We have encountered an unexpected error.";
                             if (error instanceof HttpErrorResponse) {
