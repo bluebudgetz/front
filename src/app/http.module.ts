@@ -12,7 +12,7 @@ import {delay} from "rxjs/operators";
 import {environment} from "../environments/environment";
 
 @Injectable()
-export class NoopInterceptor implements HttpInterceptor {
+class DelayInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (environment.httpDelay) {
             const randomDelay = Math.floor(Math.random() * Math.floor(environment.httpDelay));
@@ -28,7 +28,7 @@ export class NoopInterceptor implements HttpInterceptor {
     imports: [HttpClientModule],
     exports: [HttpClientModule],
     providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true}
+        {provide: HTTP_INTERCEPTORS, useClass: DelayInterceptor, multi: true}
     ]
 })
 export class AppHttpModule {
