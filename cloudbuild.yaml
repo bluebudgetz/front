@@ -1,8 +1,0 @@
-steps:
-    - id: build-front
-      name: gcr.io/cloud-builders/docker
-      args: ["build", "--tag=gcr.io/${PROJECT_ID}/bluebudgetz/front:${SHORT_SHA}", "--file=Dockerfile", "."]
-    - id: push-front
-      name: gcr.io/cloud-builders/docker
-      args: ["push", "gcr.io/${PROJECT_ID}/bluebudgetz/front:${SHORT_SHA}"]
-      waitFor: [build-front]
