@@ -4,7 +4,7 @@ COPY ./package.json ./package-lock.json ./
 RUN npm ci
 COPY e2e ./e2e/
 COPY src ./src/
-COPY angular.json tsconfig.json tslint.json ./
+COPY angular.json browserslist karma.conf.js tsconfig.* tslint.json ./
 RUN npm run build
 
 FROM nginx:1.15.10-alpine

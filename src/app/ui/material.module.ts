@@ -41,8 +41,8 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule
-} from "@angular/material";
-import {DragDropModule} from "@angular/cdk/drag-drop";
+} from '@angular/material';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 const modules = [
     DragDropModule,
@@ -89,18 +89,17 @@ const modules = [
 ];
 
 @NgModule({
-    declarations: [],
     imports: modules,
     exports: modules,
     providers: [
         {
             provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {
-                horizontalPosition: "end",
+                horizontalPosition: 'end',
                 duration: 60 * 1000,
-                verticalPosition: "top",
+                verticalPosition: 'top',
             }
         }
-    ]
+    ],
 })
-export class MaterialModule {
+export class AppMaterialModule {
 }

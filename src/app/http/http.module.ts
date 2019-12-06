@@ -1,15 +1,8 @@
-import {
-    HTTP_INTERCEPTORS,
-    HttpClientModule,
-    HttpEvent,
-    HttpHandler,
-    HttpInterceptor,
-    HttpRequest
-} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Injectable, NgModule} from "@angular/core";
-import {delay} from "rxjs/operators";
-import {environment} from "../environments/environment";
+import {Injectable, NgModule} from '@angular/core';
+import {HTTP_INTERCEPTORS, HttpClientModule, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {delay} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable()
 export class NoopInterceptor implements HttpInterceptor {
@@ -28,8 +21,8 @@ export class NoopInterceptor implements HttpInterceptor {
     imports: [HttpClientModule],
     exports: [HttpClientModule],
     providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true}
-    ]
+      {provide: HTTP_INTERCEPTORS, useClass: NoopInterceptor, multi: true},
+    ],
 })
 export class AppHttpModule {
 }
