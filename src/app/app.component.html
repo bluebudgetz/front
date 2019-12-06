@@ -1,8 +1,14 @@
+<mat-menu #userMenu="matMenu">
+    <!-- TODO: implement user menu (login/logout, profile-->
+    <button mat-menu-item>Settings</button>
+    <button mat-menu-item>Help</button>
+</mat-menu>
 <mat-sidenav-container class="root">
     <mat-sidenav #sidenav role="navigation" [opened]="sideBarOpen" (closed)="sideBarOpen=false">
         <mat-nav-list>
             <h3 mat-subheader>Navigation</h3>
-            <a mat-list-item *ngFor="let m of menu" routerLinkActive="active" [routerLink]="m.path" (click)="sideBarOpen=false">
+            <a mat-list-item *ngFor="let m of menu" routerLinkActive="active" [routerLink]="m.path"
+               (click)="sideBarOpen=false">
                 <mat-icon matListIcon>{{ m.icon }}</mat-icon>
                 <span class="label">{{ m.text }}</span>
             </a>
@@ -17,15 +23,27 @@
                 <div>
                     <a routerLink="/">Bluebudgetz</a>
                 </div>
+                <div class="spacer"></div>
+                <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
             </mat-toolbar>
         </header>
         <main>
             <router-outlet></router-outlet>
         </main>
         <footer>
-            <span>Copyright&nbsp;&copy; 2019 Arik Kfir</span>
-            <a href="https://www.linkedin.com/in/arikkfir">LinkedIn</a>
-            <a href="https://github.com/arikkfir">GitHub</a>
+            <span>Copyright&nbsp;<fa-icon [icon]="['far', 'copyright']" size="1x"></fa-icon> 2019 Arik Kfir</span>
+            &nbsp;
+            &nbsp;
+            <a href="https://www.linkedin.com/in/arikkfir">
+                <fa-icon [icon]="['fab','linkedin']" size="1x"></fa-icon>
+            </a>
+            &nbsp;
+            &nbsp;
+            <a href="https://github.com/arikkfir">
+                <fa-icon [icon]="['fab','github']" size="1x"></fa-icon>
+            </a>
         </footer>
     </mat-sidenav-content>
 </mat-sidenav-container>
