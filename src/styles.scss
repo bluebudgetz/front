@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+// Add support for custom theming
+@import '~@angular/material/theming';
+
+// Include the common styles for Angular Material
+@include mat-core();
+
+// Declare available palettes from Material
+$hues: 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, A100, A200, A400, A700;
+$palettes: (
+        "red": mat-palette($mat-red),
+        "pink": mat-palette($mat-pink),
+        "purple": mat-palette($mat-purple),
+        "deep-purple": mat-palette($mat-deep-purple),
+        "indigo": mat-palette($mat-indigo),
+        "blue": mat-palette($mat-blue),
+        "light-blue": mat-palette($mat-light-blue),
+        "cyan": mat-palette($mat-cyan),
+        "teal": mat-palette($mat-teal),
+        "green": mat-palette($mat-green),
+        "light-green": mat-palette($mat-light-green),
+        "lime": mat-palette($mat-lime),
+        "yellow": mat-palette($mat-yellow),
+        "amber": mat-palette($mat-amber),
+        "orange": mat-palette($mat-orange),
+        "deep-orange": mat-palette($mat-deep-orange),
+        "brown": mat-palette($mat-brown),
+        "grey": mat-palette($mat-grey),
+        "gray": mat-palette($mat-gray),
+        "blue-grey": mat-palette($mat-blue-grey),
+        "blue-gray": mat-palette($mat-blue-gray)
+);
+
+// Define the light & dark theme containers, that provides theme values as CSS custom properties
+// To use these properties in component style files, simply reference them as such:
+//    --primary-color-50, --accent-color-700, --accent-color-700-contrast
+//    --warn-color-400, --red-color-700, --red-color-700-contrast
+//  And so on...
+.light-theme {
+  $all: map_merge($palettes, (
+          "primary": mat-palette($mat-indigo),
+          "accent": mat-palette($mat-amber),
+          "warn": mat-palette($mat-red)
+  ));
+  @include angular-material-theme(mat-light-theme(map-get($all, primary), map-get($all, accent), map-get($all, warn)));
+  @each $name, $palette in $all {
+    @each $hue in $hues {
+      --#{$name}-color-#{$hue}: #{mat-color($palette, $hue)};
+      --#{$name}-color-#{$hue}-contrast: #{mat-color($palette, "#{$hue}-contrast")};
+    }
+  }
+}
+.dark-theme {
+  $all: map_merge($palettes, (
+          "primary": mat-palette($mat-blue-grey),
+          "accent": mat-palette($mat-amber, A200, A100, A400),
+          "warn": mat-palette($mat-deep-orange)
+  ));
+  @include angular-material-theme(mat-dark-theme(map-get($all, primary), map-get($all, accent), map-get($all, warn)));
+  @each $name, $palette in $palettes {
+    @each $hue in $hues {
+      --#{$name}-color-#{$hue}: #{mat-color($palette, $hue)};
+      --#{$name}-color-#{$hue}-contrast: #{mat-color($palette, "#{$hue}-contrast")};
+    }
+  }
+}
+
+// Global styles
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,30 @@
+.root {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+header {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5);
+  .brand {
+    text-shadow: #000 1px 1px 1px;
+    text-transform: uppercase;
+  }
+}
+
+main {
+  padding: 1em;
+}
+
+footer {
+  background-color: var(--accent-color-50);
+  box-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.2);
+  //  color: mat-color($mat-red, 500);
+  color: var(--primary-color);
+  padding: 0.3em;
+  a, a:visited, a:hover {
+    color: inherit;
+  }
+}
