@@ -1,29 +1,25 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule} from './http/routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from './material/material.module';
-import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {fas} from '@fortawesome/free-solid-svg-icons';
-import {far} from '@fortawesome/free-regular-svg-icons';
-import {fab} from '@fortawesome/free-brands-svg-icons';
+import {AppMaterialModule} from './ui/material.module';
+import {AppHttpModule} from './http/http.module';
+import {AppFontAwesomeModule} from './ui/fontawesome.module';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         BrowserAnimationsModule,
-        MaterialModule,
-        FontAwesomeModule,
+        AppFontAwesomeModule,
+        AppHttpModule,
+        AppMaterialModule,
+        AppRoutingModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(library: FaIconLibrary) {
-        library.addIconPacks(fas, far, fab);
-    }
 }
